@@ -2,6 +2,7 @@
   "name": "omnilector",
   "version": "1.0.0",
   "description": "Omnilector — Lector unificado de libros EPUB y cómics (CBZ, CBR, CBT) con categorías y diseño Material Design 3 para Android, iOS y Web (PWA).",
+  "license": "AGPL-3.0-or-later",
   "private": true,
   "scripts": {
     "start": "npx serve www -l 3000",

@@ -180,5 +180,6 @@ Si no dispones de un Mac con Xcode, **Omnilector** está optimizada para iOS com
 
 ## 📜 Licencia
 
-Proyecto de código abierto para lectura personal de libros EPUB y cómics sin DRM.
+Este proyecto está distribuido bajo la licencia **GNU Affero General Public License v3.0 (AGPL-3.0)**. Consulta el archivo [LICENSE](LICENSE) para ver el texto completo de la licencia.
+
 
