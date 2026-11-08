@@ -1,0 +1,16 @@
+{
+  "appId": "com.omnilector.app",
+  "appName": "Omnilector",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "capacitor"
+  },
+  "plugins": {
+    "StatusBar": {
+      "overlaysWebView": true,
+      "style": "DEFAULT"
+    }
+  }
+}
+

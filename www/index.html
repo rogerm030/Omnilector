@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fef7ff">
+  <meta name="description" content="Omnilector — Lector unificado de libros EPUB y cómics (CBZ, CBR, CBT) con categorías compartidas y diseño Material UI.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Omnilector">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Omnilector</title>
+  <link rel="stylesheet" href="css/material3.css">
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4"/></symbol>
+  <symbol id="i-books" viewBox="0 0 24 24"><path d="M4.5 4h3.5v16H4.5zM10 4h3.5v16H10zM15.4 5.3l3.3-.9 3.4 14.6-3.3.9z"/></symbol>
+  <symbol id="i-comic" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 11.5h17M11.5 4v7.5M13.5 11.5l-2 8.5"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M7 3.5h10a1 1 0 0 1 1 1V21l-6-4.2L6 21V4.5a1 1 0 0 1 1-1z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 11v6M14 11v6M6.5 7l.8 11a2 2 0 0 0 2 1.9h5.4a2 2 0 0 0 2-1.9L17.5 7M9.5 7V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7.5 18.5h9a4 4 0 0 0 .6-7.95A5.5 5.5 0 0 0 6.6 9.1a4.7 4.7 0 0 0 .9 9.4z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1zM14 3.5V8h4"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M6 5v14M19 5l-10 7 10 7z"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M18 5v14M5 5l10 7-10 7z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.8v13c3.6-.3 6.2.2 8 1.7 1.8-1.5 4.4-2 8-1.7v-13c-3.6-.3-6.2.2-8 1.7zM12 6.5v13"/></symbol>
+  <symbol id="i-open-book" viewBox="0 0 24 24"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.8v13c3.6-.3 6.2.2 8 1.7 1.8-1.5 4.4-2 8-1.7v-13c-3.6-.3-6.2.2-8 1.7zM12 6.5v13"/></symbol>
+  <symbol id="i-zoom-in" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8v6M8 11h6"/></symbol>
+  <symbol id="i-zoom-out" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M8 11h6"/></symbol>
+  <symbol id="i-fit" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+</svg>
+
+<script>window.__PWA__ = true;</script>
+
+<div id="app">
+  <!-- ════════ Pantalla de Biblioteca (Pestañas Libros y Cómics) ════════ -->
+  <main id="libraryScreen" class="screen">
+    <header class="navbar" id="libNav">
+      <div class="gutter"><div class="wrap">
+        <div class="nav-row">
+          <div class="nav-brand">
+            <span class="nav-brand-badge"><svg class="ic"><use href="#i-book"/></svg></span>
+            <span>Omnilector</span>
+          </div>
+          <div class="nav-right">
+            <button class="nav-btn" id="selectBtn" type="button">Seleccionar</button>
+            <button class="nav-btn" id="addTopBtn" type="button" aria-label="Añadir archivos">
+              <svg class="ic" style="width:20px;height:20px"><use href="#i-plus"/></svg>
+              <span>Añadir</span>
+            </button>
+          </div>
+        </div>
+      </div></div>
+    </header>
+
+    <div class="gutter"><div class="wrap">
+      <div class="header-block">
+        <h1 class="large-title" id="libTitle">Libros</h1>
+        <span class="header-count" id="libCount">0</span>
+      </div>
+
+      <div id="libTools">
+        <label class="search" id="searchBox">
+          <svg class="ic"><use href="#i-search"/></svg>
+          <input id="searchInput" type="search" placeholder="Buscar por título o autor…" autocomplete="off" enterkeyhint="search">
+          <button class="clear" id="searchClear" type="button" aria-label="Borrar búsqueda"><svg class="ic"><use href="#i-x"/></svg></button>
+        </label>
+
+        <div class="chips-header">
+          <span class="chips-label">Categorías compartidas</span>
+        </div>
+        <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+
+        <div class="seg filter-seg" id="filterSeg" style="--n:3"></div>
+      </div>
+
+      <div id="libContent"></div>
+    </div></div>
+  </main>
+
+  <!-- ════════ Pantalla de Ajustes ════════ -->
+  <main id="settingsScreen" class="screen" hidden>
+    <header class="navbar" id="setNav">
+      <div class="gutter"><div class="wrap">
+        <div class="nav-row">
+          <div class="nav-brand">
+            <span class="nav-brand-badge"><svg class="ic"><use href="#i-gear"/></svg></span>
+            <span>Omnilector</span>
+          </div>
+          <span></span>
+        </div>
+      </div></div>
+    </header>
+    <div class="gutter"><div class="wrap" style="max-width:680px">
+      <div class="header-block">
+        <h1 class="large-title" id="setTitle">Ajustes</h1>
+      </div>
+      <div id="settingsBody"></div>
+    </div></div>
+  </main>
+
+  <!-- ════════ Botón Flotante Material 3 (FAB) ════════ -->
+  <button class="fab" id="fabAdd" type="button" aria-label="Añadir libro o cómic">
+    <svg class="ic"><use href="#i-plus"/></svg>
+    <span id="fabLabel">Añadir</span>
+  </button>
+
+  <!-- ════════ Barra de Navegación Inferior Material 3 ════════ -->
+  <nav class="tabbar" id="tabbar" aria-label="Navegación principal">
+    <div class="tabbar-row" role="tablist">
+      <button class="tab" role="tab" id="tabBooks" aria-selected="true" type="button">
+        <span class="tab-pill"><svg class="ic"><use href="#i-book"/></svg></span>
+        <span>Libros</span>
+      </button>
+      <button class="tab" role="tab" id="tabComics" aria-selected="false" type="button">
+        <span class="tab-pill"><svg class="ic"><use href="#i-comic"/></svg></span>
+        <span>Cómics</span>
+      </button>
+      <button class="tab" role="tab" id="tabSettings" aria-selected="false" type="button">
+        <span class="tab-pill"><svg class="ic"><use href="#i-gear"/></svg></span>
+        <span>Ajustes</span>
+      </button>
+    </div>
+
+    <div class="selbar">
+      <button type="button" id="selCancel">Cancelar</button>
+      <span class="count" id="selCount"></span>
+      <div style="display:flex;gap:6px">
+        <button type="button" id="selMove" class="tonal-act" disabled><svg class="ic"><use href="#i-folder"/></svg>Categoría</button>
+        <button type="button" id="selDelete" class="danger" disabled><svg class="ic"><use href="#i-trash"/></svg>Eliminar</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════ Lector de Libros EPUB (Folio Engine) ════════ -->
+  <section class="reader chrome-off" id="bookReader" hidden aria-label="Lector de libros EPUB">
+    <div class="book" id="bookWrap">
+      <div class="stage" id="bookStage">
+        <div class="pager" id="pager"></div>
+        <div class="scroller" id="scroller" hidden></div>
+        <div class="head" id="head"></div>
+        <div class="foot" id="foot"><span id="footL"></span><span id="footR"></span></div>
+        <div class="stage-msg" id="bookStageMsg"></div>
+      </div>
+    </div>
+    <header class="rbar rtop">
+      <div class="rrow">
+        <button class="back" id="bookBackBtn" type="button"><svg class="ic"><use href="#i-back"/></svg>Libros</button>
+        <div class="rtitle"><b id="bookRName"></b><small id="bookRSub"></small></div>
+        <button class="ibtn" id="aaBtn" type="button" aria-label="Apariencia del texto">Aa</button>
+      </div>
+    </header>
+    <footer class="rbar rbottom">
+      <div class="scrub">
+        <input id="bookScrub" type="range" min="0" max="1000" value="0" aria-label="Posición en el libro">
+        <span id="bookScrubPct">0%</span>
+      </div>
+      <div class="rrow rtools">
+        <button class="ibtn" id="bookIndexBtn" type="button" aria-label="Índice y marcadores"><svg class="ic"><use href="#i-list"/></svg></button>
+        <button class="ibtn" id="chPrev" type="button" aria-label="Capítulo anterior"><svg class="ic"><use href="#i-prev"/></svg></button>
+        <button class="ibtn" id="bookMarkBtn" type="button" aria-label="Marcar esta página" aria-pressed="false"><svg class="ic" id="bookMarkIc"><use href="#i-bookmark"/></svg></button>
+        <button class="ibtn" id="chNext" type="button" aria-label="Capítulo siguiente"><svg class="ic"><use href="#i-next"/></svg></button>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ════════ Lector de Cómics CBZ/CBR/CBT (Viñetas Engine) ════════ -->
+  <section class="reader chrome-off" id="comicReader" hidden aria-label="Lector de cómics">
+    <div class="stage" id="comicStage">
+      <div class="page" id="page"><img id="pageImg" alt="" draggable="false"></div>
+      <div class="stage-msg" id="comicStageMsg"></div>
+    </div>
+    <header class="rbar rtop">
+      <div class="rrow">
+        <button class="back" id="comicBackBtn" type="button"><svg class="ic"><use href="#i-back"/></svg>Cómics</button>
+        <div class="rtitle"><b id="comicRName"></b><small id="comicRSub"></small></div>
+        <button class="ibtn" id="comicRSettings" type="button" aria-label="Ajustes de lectura"><svg class="ic"><use href="#i-gear"/></svg></button>
+      </div>
+    </header>
+    <footer class="rbar rbottom">
+      <div class="scrub">
+        <span id="comicScrubA">1</span>
+        <input id="comicScrub" type="range" min="1" max="1" value="1" aria-label="Ir a la página">
+        <span id="comicScrubB">1</span>
+      </div>
+      <div class="rrow rtools">
+        <button class="ibtn" id="comicIndexBtn" type="button" aria-label="Índice de páginas"><svg class="ic"><use href="#i-list"/></svg></button>
+        <button class="ibtn" id="comicMarkBtn" type="button" aria-label="Marcar página" aria-pressed="false"><svg class="ic" id="comicMarkIc"><use href="#i-bookmark"/></svg></button>
+        <div class="zoomgroup">
+          <button class="ibtn" id="zoomOut" type="button" aria-label="Alejar"><svg class="ic"><use href="#i-zoom-out"/></svg></button>
+          <span class="zoom-label" id="zoomLabel">100%</span>
+          <button class="ibtn" id="zoomIn" type="button" aria-label="Acercar"><svg class="ic"><use href="#i-zoom-in"/></svg></button>
+        </div>
+        <button class="ibtn" id="fitBtn" type="button" aria-label="Ajuste de página"><svg class="ic"><use href="#i-fit"/></svg></button>
+      </div>
+    </footer>
+  </section>
+
+  <input type="file" id="fileInput" multiple hidden>
+  <div class="dropzone" id="dropzone">Suelta tus libros (.epub) o cómics (.cbz, .cbr, .cbt) aquí</div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div id="overlayRoot"></div>
+</div>
+
+<!-- Motores de descompresión y renderizado -->
+<script src="js/engines/unrar-wasm.js"></script>
+<script src="js/engines/vinetas-core.js"></script>
+<script src="js/engines/folio-core.js"></script>
+<!-- Módulos de Omnilector -->
+<script src="js/db.js"></script>
+<script src="js/cloud.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
+

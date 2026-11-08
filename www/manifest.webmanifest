@@ -1,0 +1,63 @@
+{
+  "name": "Omnilector",
+  "short_name": "Omnilector",
+  "description": "Lector unificado de libros EPUB y cómics (CBZ, CBR, CBT) con categorías compartidas, temas de lectura y diseño Material UI.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fef7ff",
+  "theme_color": "#6750a4",
+  "categories": [
+    "books",
+    "entertainment",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "./",
+      "accept": {
+        "application/epub+zip": [
+          ".epub"
+        ],
+        "application/vnd.comicbook+zip": [
+          ".cbz"
+        ],
+        "application/vnd.comicbook-rar": [
+          ".cbr"
+        ],
+        "application/x-tar": [
+          ".cbt"
+        ],
+        "application/zip": [
+          ".zip"
+        ],
+        "application/vnd.rar": [
+          ".rar"
+        ]
+      }
+    }
+  ]
+}
+
